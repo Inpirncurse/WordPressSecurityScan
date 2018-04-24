@@ -28,7 +28,6 @@ public class Main {
         get_thread.start();
         while (get_thread.isAlive()) {
             if (get.getHoli() == 1) {
-                //System.out.println("nel");
                 get_thread.interrupt();
                 get_thread.join();
                 return;
@@ -39,7 +38,7 @@ public class Main {
         sqlInject_thread.start();
         while (sqlInject_thread.isAlive()) {
             if (sqlInject.getFLAG() == 1) {
-                System.out.println("YOUR SITE IS VULNERABLE AGAINST BRUTE FORCE ATTACKS...");
+                System.out.println("YOUR SITE IS VULNERABLE AGAINST SQL INJECTIONS ATTACKS...");
                 break;
             }
         }
@@ -51,7 +50,6 @@ public class Main {
             executorService.submit(tsk);
             TimeUnit.MILLISECONDS.sleep(5000);
             if (tsk.getFLAG() == 0) {
-
                 executorService.shutdownNow();
                 break;
             } else if(i == 9){
@@ -64,6 +62,5 @@ public class Main {
         sqlInject_thread.interrupt();
         sqlInject_thread.join();
         executorService.shutdown();
-
     }
 }
